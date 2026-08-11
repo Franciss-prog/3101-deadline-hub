@@ -1,0 +1,16 @@
+# Env files (any dir: frontend/, backend/, root)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
