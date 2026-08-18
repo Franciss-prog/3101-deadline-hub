@@ -22,6 +22,6 @@ func Connect() *pgxpool.Pool {
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	log.Println("Connected to database")
 	return db
 }

@@ -1,6 +1,4 @@
 package config
 
-func GetEnv(key string) string {
-
-	return ""
-}
+var JwtSecret string
+var DbUrl string
