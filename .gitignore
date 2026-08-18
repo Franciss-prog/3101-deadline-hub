@@ -6,6 +6,9 @@
 .env.production
 .env.test
 
+# backend files
+backend/tmp/
+
 # OS
 .DS_Store
 Thumbs.db
