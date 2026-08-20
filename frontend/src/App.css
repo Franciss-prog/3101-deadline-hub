@@ -1,16 +1,78 @@
+/* ==============================
+   Dashboard
+================================= */
 .dashboard {
+  margin-bottom: 30px;
+}
+
+.dashboardHeader h1 {
+  margin: 0 0 5px 0;
+}
+
+.dashboardHeader p {
+  color: #777;
+  margin: 0;
+}
+
+.summaryCards {
   display: flex;
-  min-height: 700px;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.summaryCard {
+  flex: 1;
+  padding: 20px;
+
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.summaryCard h2 {
+  margin: 0 0 5px;
+  color: red;
+  font-size: 28px;
+}
+
+.summaryCard p {
+  margin: 0;
+  color: #666;
+}
+
+.summaryCard:hover {
+  border-color: red;
+}
+
+
+/* ==============================
+   Layout
+================================= */
+.appLayout {
+  display: flex;
+  min-height: 100vh;
   background-color: #f5f5f5;
 }
 
-/* Sidebar */
+.pageContent {
+  flex: 1;
+  padding: 40px;
+  box-sizing: border-box;
+}
 
+
+/* ==============================
+   Sidebar
+================================= */
 .sidebar {
   width: 220px;
+  min-height: 100vh;
+
   padding: 30px 20px;
+
   background-color: white;
   border-right: 1px solid #ddd;
+
   box-sizing: border-box;
 }
 
@@ -21,32 +83,72 @@
 .sidebar nav {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
 }
 
 .sidebar a {
   text-decoration: none;
-  color: black;
+  color: #333;
+
+  padding: 12px 15px;
+
+  border-radius: 6px;
+
+  transition: 0.2s;
 }
 
-/* Main area */
-.dashboardContent {
-  flex: 1;
-  padding: 40px;
+.sidebar a:hover {
+  background-color: #f5f5f5;
 }
 
-.dashboardHeader h1 {
-  margin-bottom: 5px;
+.sidebar a:active {
+  background-color: red;
+  color: white;
 }
 
-.dashboardHeader p {
+
+/* User information */
+
+.userInfo {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.userInfo > span {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background-color: red;
+  color: white;
+
+  font-weight: bold;
+}
+
+.userInfo strong {
+  display: block;
+}
+
+.userInfo p {
+  margin: 3px 0 0;
+
   color: #777;
+  font-size: 14px;
 }
 
 
-
-
-.upcomingDeadlines {
+/* ==============================
+   Dashboard Sections
+================================= */
+.deadlines {
   margin-top: 40px;
 }
 
@@ -54,12 +156,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-bottom: 20px;
 }
 
 
-
-
+/* ==============================
+   Announcements
+================================= */
 .announcements {
   margin-top: 40px;
 }
@@ -69,18 +173,577 @@
   margin-bottom: 15px;
 
   background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+
+  border-left: 4px solid red;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .announcementCard h3 {
   margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .announcementCard p {
   color: #666;
+  margin-bottom: 10px;
 }
 
 .announcementCard small {
   color: #999;
+}
+
+
+/* ==============================
+   Dashboard Deadline Cards
+================================= */
+.deadlineCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+
+  background-color: white;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.deadlineInfo h3 {
+  margin: 0 0 10px;
+}
+
+.deadlineInfo p {
+  margin: 5px 0;
+
+  color: #666;
+}
+
+.deadlineStatus {
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  background-color: #fff0f0;
+  color: red;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.deadlineCard button {
+  padding: 8px 15px;
+
+  border: none;
+  border-radius: 5px;
+
+  background-color: red;
+  color: white;
+
+  cursor: pointer;
+}
+
+.deadlineCard button:hover {
+  opacity: 0.8;
+}
+
+
+/* View All button */
+.viewAllButton {
+  padding: 8px 15px;
+
+  background-color: red;
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+
+.viewAllButton:hover {
+  opacity: 0.8;
+}
+
+
+/* ==============================
+   Deadlines Page
+================================= */
+.deadlinesPage {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+
+/* Page Header */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.pageHeader h1 {
+  margin: 0 0 5px;
+}
+
+.pageHeader p {
+  margin: 0;
+
+  color: #777;
+}
+
+
+/* Add Deadline button */
+.addButton {
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: red;
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.addButton:hover {
+  opacity: 0.8;
+}
+
+
+/* ==============================
+   Deadline Filters
+================================= */
+.deadlineFilters {
+  display: flex;
+  gap: 10px;
+
+  margin-bottom: 30px;
+}
+
+.filterButton {
+  padding: 8px 15px;
+
+  background-color: white;
+  color: #333;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.filterButton:hover {
+  border-color: red;
+}
+
+.filterButton.active {
+  background-color: red;
+  color: white;
+
+  border-color: red;
+}
+
+
+/* ==============================
+   Deadline Page Buttons
+================================= */
+.deadlineButton {
+  padding: 8px 15px;
+
+  background-color: red;
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.deadlineButton:hover {
+  opacity: 0.8;
+}
+
+
+
+
+/* ==============================
+   Announcement Page Buttons
+================================= */
+.announcementList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.announcementPageCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+
+  background-color: white;
+  border-left: 4px solid red;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.announcementPageCard h2 {
+  margin: 0 0 10px;
+}
+
+.announcementPageCard p {
+  margin: 0 0 10px;
+  color: #666;
+}
+
+.announcementPageCard small {
+  color: #999;
+}
+
+.announcementActions {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton,
+.deleteButton {
+  padding: 8px 15px;
+
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.editButton {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.deleteButton {
+  background-color: red;
+  color: white;
+}
+
+.editButton:hover,
+.deleteButton:hover {
+  opacity: 0.8;
+}
+
+
+
+
+
+/* ==============================
+   Subject Page Buttons
+================================= */
+.subjectList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.subjectCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+
+  background-color: white;
+  color: #333;
+
+  text-decoration: none;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+  transition: 0.2s;
+}
+
+.subjectCard:hover {
+  border-color: red;
+  transform: translateY(-2px);
+}
+
+.subjectCard h2 {
+  margin: 0 0 8px;
+}
+
+.subjectCard p {
+  margin: 0;
+  color: #777;
+}
+
+.subjectCard > span {
+  color: red;
+  font-size: 24px;
+}
+
+
+
+/* ==============================
+   SubjectDetails Page Buttons
+================================= */
+.subjectDetailsPage {
+  min-height: 100vh;
+}
+
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.activityCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+
+  background-color: white;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.activityCard h2 {
+  margin: 0 0 8px;
+}
+
+.activityCard p {
+  margin: 0;
+  color: #777;
+}
+
+.activityActions {
+  display: flex;
+  gap: 10px;
+}
+
+.doneButton,
+.editButton,
+.deleteButton {
+  padding: 8px 15px;
+
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.doneButton {
+  background-color: #fff0f0;
+  color: red;
+}
+
+.doneButton:hover,
+.editButton:hover,
+.deleteButton:hover {
+  opacity: 0.8;
+}
+
+.pendingStatus,
+.completedStatus {
+  display: inline-block;
+
+  margin-top: 10px;
+  padding: 5px 10px;
+
+  border-radius: 15px;
+
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.pendingStatus {
+  background-color: #fff0f0;
+  color: red;
+}
+
+.completedStatus {
+  background-color: #eeeeee;
+  color: #555;
+}
+
+.activityDescription {
+  max-width: 700px;
+  margin: 0 0 10px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  font-weight: bold;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 10px;
+
+  border: 1px solid #ddd;
+  border-radius: 5px;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+.formGroup textarea {
+  resize: vertical;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancelButton {
+  padding: 10px 18px;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  background-color: white;
+  color: #333;
+
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: #f5f5f5;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 1000;
+}
+
+.activityModal {
+  width: 500px;
+  max-width: 90%;
+
+  padding: 25px;
+
+  background-color: white;
+  border-radius: 10px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+
+  box-sizing: border-box;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.modalHeader h2 {
+  margin: 0;
+}
+
+.closeButton {
+  border: none;
+  background: none;
+
+  font-size: 28px;
+  color: #777;
+
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: red;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  font-weight: bold;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 10px;
+
+  border: 1px solid #ddd;
+  border-radius: 5px;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+.formGroup textarea {
+  resize: vertical;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancelButton {
+  padding: 10px 18px;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  background-color: white;
+  color: #333;
+
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: #f5f5f5;
 }
