@@ -31,7 +31,7 @@
 
 .summaryCard h2 {
   margin: 0 0 5px;
-  color: red;
+  color: #9a1b1b;
   font-size: 28px;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .summaryCard:hover {
-  border-color: red;
+  border-color: #9a1b1b;
 }
 
 
@@ -105,7 +105,7 @@
 }
 
 .sidebar a:active {
-  background-color: red;
+  background-color: #9a1b1b;
   color: white;
 }
 
@@ -130,7 +130,7 @@
 
   border-radius: 50%;
 
-  background-color: red;
+  background-color: #9a1b1b;
   color: white;
 
   font-weight: bold;
@@ -177,7 +177,7 @@
 
   background-color: white;
 
-  border-left: 4px solid red;
+  border-left: 4px solid #9a1b1b;
   border-radius: 8px;
 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -230,7 +230,7 @@
   border-radius: 20px;
 
   background-color: #fff0f0;
-  color: red;
+  color: #9a1b1b;
 
   font-size: 14px;
   font-weight: bold;
@@ -242,7 +242,7 @@
   border: none;
   border-radius: 5px;
 
-  background-color: red;
+  background-color: #9a1b1b;
   color: white;
 
   cursor: pointer;
@@ -257,7 +257,7 @@
 .viewAllButton {
   padding: 8px 15px;
 
-  background-color: red;
+  background-color: #9a1b1b;
   color: white;
 
   text-decoration: none;
@@ -308,7 +308,7 @@
   border: none;
   border-radius: 6px;
 
-  background-color: red;
+  background-color: #9a1b1b;
   color: white;
 
   font-weight: bold;
@@ -344,14 +344,14 @@
 }
 
 .filterButton:hover {
-  border-color: red;
+  border-color: #9a1b1b;
 }
 
 .filterButton.active {
-  background-color: red;
+  background-color: #9a1b1b;
   color: white;
 
-  border-color: red;
+  border-color: #9a1b1b;
 }
 
 
@@ -361,7 +361,7 @@
 .deadlineButton {
   padding: 8px 15px;
 
-  background-color: red;
+  background-color: #9a1b1b;
   color: white;
 
   text-decoration: none;
@@ -395,7 +395,7 @@
   padding: 20px;
 
   background-color: white;
-  border-left: 4px solid red;
+  border-left: 4px solid #9a1b1b;
   border-radius: 8px;
 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -435,7 +435,7 @@
 }
 
 .deleteButton {
-  background-color: red;
+  background-color: #9a1b1b;
   color: white;
 }
 
@@ -478,7 +478,7 @@
 }
 
 .subjectCard:hover {
-  border-color: red;
+  border-color: #9a1b1b;
   transform: translateY(-2px);
 }
 
@@ -492,7 +492,7 @@
 }
 
 .subjectCard > span {
-  color: red;
+  color: #9a1b1b;
   font-size: 24px;
 }
 
@@ -553,7 +553,7 @@
 
 .doneButton {
   background-color: #fff0f0;
-  color: red;
+  color: #9a1b1b;
 }
 
 .doneButton:hover,
@@ -577,7 +577,7 @@
 
 .pendingStatus {
   background-color: #fff0f0;
-  color: red;
+  color: #9a1b1b;
 }
 
 .completedStatus {
@@ -697,7 +697,7 @@
 }
 
 .closeButton:hover {
-  color: red;
+  color: #9a1b1b;
 }
 
 .formGroup {
@@ -756,7 +756,7 @@
   padding: 12px 15px;
   border: none;
   border-radius: 6px;
-  background-color: red;
+  background-color: #9a1b1b;
   color: white;
   font-weight: bold;
   cursor: pointer;
