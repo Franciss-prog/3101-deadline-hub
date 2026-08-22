@@ -1,6 +1,27 @@
 import { Link } from "react-router-dom"
+import { useState } from "react"
+
+const filters = ["All", "IT 311", "IT 312", "IT 313", "IT 314"]
+
+const deadlines = [
+  {
+    id: 1,
+    subjectCode: "IT 311",
+    subjectName: "Systems Administration and Maintenance",
+    due: "August 20, 2026",
+    status: "Upcoming"
+  },
+]
 
 function DeadlinesPage() {
+
+  const [activeFilter, setActiveFilter] = useState("All")
+
+  const filteredDeadlines =
+    activeFilter === "All"
+      ? deadlines
+      : deadlines.filter((deadline) => deadline.subjectCode === activeFilter)
+
   return (
     <div className="deadlinesPage">
 
@@ -10,45 +31,50 @@ function DeadlinesPage() {
           <p>View and manage your class deadlines.</p>
         </div>
 
-        <button className="addButton">+ Add Deadline</button>
       </header>
 
       <div className="deadlineFilters">
-        <button className="filterButton active">All</button>
-        <button className="filterButton ">IT 311</button>
-        <button className="filterButton ">IT 312</button>
-        <button className="filterButton ">IT 313</button>
-        <button className="filterButton ">IT 314</button>
-
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            className={
+              filter === activeFilter
+                ? "filterButton active"
+                : "filterButton"
+            }
+            onClick={() => setActiveFilter(filter)}
+          >
+            {filter}
+          </button>
+        ))}
       </div>
 
       <div className="deadlineList">
-        <div className="deadlinePageCard">
-          <div className="deadlinePageInfo">
-            <h3>IT 311</h3>
-            <p>Subject: Systems Administration and Maintenance</p>
-            <p>Due: August 20, 2026</p>
+
+        {filteredDeadlines.length === 0 && (
+          <p>No deadlines for {activeFilter}.</p>
+        )}
+
+        {filteredDeadlines.map((deadline) => (
+          <div className="deadlinePageCard" key={deadline.id}>
+            <div className="deadlinePageInfo">
+              <h3>{deadline.subjectCode}</h3>
+              <p>Subject: {deadline.subjectName}</p>
+              <p>Due: {deadline.due}</p>
+            </div>
+
+            <span className="deadlineStatus">{deadline.status}</span>
+
+            <Link
+              to={`/deadlines/${deadline.id}`}
+              className="deadlineButton"
+            >
+              View Details
+            </Link>
           </div>
-          <span className="deadlineStatus">Upcoming</span>
-
-          <Link to = "/deadlines/1" className = "deadlineButton">View Details</Link>
-        </div>
-
-        <div className="deadlinePageCard">
-          <div className="deadlinePageInfo">
-            <h3>IT 312</h3>
-            <p>Subject: System Integration and Architecture</p>
-            <p>Due: August 23, 2026</p>
-          </div>
-
-          <span className="deadlineStatus">Upcoming</span>
-
-          <Link to = "/deadlines/2" className = "deadlineButton">View Details</Link>
-        </div>
+        ))}
 
       </div>
-
-
 
     </div>
   )

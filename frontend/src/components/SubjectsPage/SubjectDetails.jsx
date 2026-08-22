@@ -32,29 +32,99 @@ function SubjectDetails() {
 
   const [showForm, setShowForm] = useState(false)
 
-  const activities = [
+  // null = adding a new activity, otherwise holds the id being edited
+  const [editingId, setEditingId] = useState(null)
+
+  const [newActivity, setNewActivity] = useState({
+    title: "",
+    description: "",
+    due: ""
+  })
+
+  const [activities, setActivities] = useState([
     {
       id: 1,
-      title: "Web Systems Project",
+      title: "System Administration Activity",
       description:
-        "Create a responsive webpage using HTML and CSS. Follow the layout provided in class and submit your project as a ZIP file.",
+        "Complete the assigned system administration and maintenance activity.",
       due: "August 20, 2026"
     },
 
     {
       id: 2,
-      title: "HTML/CSS Activity",
+      title: "Practical Activity",
       description:
-        "Create a simple webpage using HTML and CSS. Make sure your webpage includes a navigation bar, content section, and footer.",
+        "Complete the practical activity and submit your work before the deadline.",
       due: "August 25, 2026"
     }
-  ]
+  ])
 
   const markAsDone = (activityId) => {
     setCompletedActivities((current) =>
       current.includes(activityId)
         ? current.filter((id) => id !== activityId)
         : [...current, activityId]
+    )
+  }
+
+  const openAddForm = () => {
+    setEditingId(null)
+    setNewActivity({ title: "", description: "", due: "" })
+    setShowForm(true)
+  }
+
+  const openEditForm = (activity) => {
+    setEditingId(activity.id)
+    setNewActivity({
+      title: activity.title,
+      description: activity.description,
+      due: activity.due
+    })
+    setShowForm(true)
+  }
+
+  const closeForm = () => {
+    setShowForm(false)
+    setEditingId(null)
+    setNewActivity({ title: "", description: "", due: "" })
+  }
+
+  const saveActivity = () => {
+    if (
+      !newActivity.title || !newActivity.description || !newActivity.due
+    ) {
+      return
+    }
+
+    if (editingId !== null) {
+      // Editing an existing activity
+      setActivities((current) =>
+        current.map((activity) =>
+          activity.id === editingId
+            ? { ...activity, ...newActivity }
+            : activity
+        )
+      )
+    } else {
+      // Adding a new activity
+      const activity = {
+        id: Date.now(),
+        title: newActivity.title,
+        description: newActivity.description,
+        due: newActivity.due
+      }
+      setActivities((current) => [...current, activity])
+    }
+
+    closeForm()
+  }
+
+  const deleteActivity = (activityId) => {
+    setActivities((current) =>
+      current.filter((activity) => activity.id !== activityId)
+    )
+    setCompletedActivities((current) =>
+      current.filter((id) => id !== activityId)
     )
   }
 
@@ -71,11 +141,14 @@ function SubjectDetails() {
           <p>{subject.code}</p>
         </div>
 
-        <button className="addButton" onClick={() => setShowForm(true)}>
-
+        <button
+          className="addButton"
+          onClick={openAddForm}
+        >
           + Add Activity
         </button>
       </header>
+
 
       {showForm && (
         <div className="modalOverlay">
@@ -83,11 +156,11 @@ function SubjectDetails() {
           <div className="activityModal">
 
             <div className="modalHeader">
-              <h2>Add Activity</h2>
+              <h2>{editingId !== null ? "Edit Activity" : "Add Activity"}</h2>
 
               <button
                 className="closeButton"
-                onClick={() => setShowForm(false)}
+                onClick={closeForm}
               >
                 ×
               </button>
@@ -100,6 +173,13 @@ function SubjectDetails() {
               <input
                 type="text"
                 placeholder="Enter activity title"
+                value={newActivity.title}
+                onChange={(e) =>
+                  setNewActivity({
+                    ...newActivity,
+                    title: e.target.value
+                  })
+                }
               />
             </div>
 
@@ -110,6 +190,13 @@ function SubjectDetails() {
               <textarea
                 placeholder="Enter activity description"
                 rows="4"
+                value={newActivity.description}
+                onChange={(e) =>
+                  setNewActivity({
+                    ...newActivity,
+                    description: e.target.value
+                  })
+                }
               ></textarea>
             </div>
 
@@ -117,7 +204,16 @@ function SubjectDetails() {
             <div className="formGroup">
               <label>Due Date</label>
 
-              <input type="date" />
+              <input
+                type="date"
+                value={newActivity.due}
+                onChange={(e) =>
+                  setNewActivity({
+                    ...newActivity,
+                    due: e.target.value
+                  })
+                }
+              />
             </div>
 
 
@@ -125,13 +221,13 @@ function SubjectDetails() {
 
               <button
                 className="cancelButton"
-                onClick={() => setShowForm(false)}
+                onClick={closeForm}
               >
                 Cancel
               </button>
 
-              <button className="addButton">
-                Add Activity
+              <button className="addButton" onClick={saveActivity}>
+                {editingId !== null ? "Save Changes" : "Add Activity"}
               </button>
 
             </div>
@@ -150,12 +246,17 @@ function SubjectDetails() {
             completedActivities.includes(activity.id)
 
           return (
-            <div className="activityCard" key={activity.id}>
+            <div
+              className="activityCard"
+              key={activity.id}
+            >
 
               <div>
                 <h2>{activity.title}</h2>
 
-                <p className="activityDescription">{activity.description}</p>
+                <p className="activityDescription">
+                  {activity.description}
+                </p>
 
                 <p>
                   Due: {activity.due}
@@ -188,11 +289,17 @@ function SubjectDetails() {
                     : "Mark as Done"}
                 </button>
 
-                <button className="editButton">
+                <button
+                  className="editButton"
+                  onClick={() => openEditForm(activity)}
+                >
                   Edit
                 </button>
 
-                <button className="deleteButton">
+                <button
+                  className="deleteButton"
+                  onClick={() => deleteActivity(activity.id)}
+                >
                   Delete
                 </button>
 

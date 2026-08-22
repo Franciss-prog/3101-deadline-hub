@@ -17,7 +17,7 @@ function Deadlines() {
         </div>
         <span className="deadlineStatus">Upcoming</span>
 
-        <button className="deadlineButton">View Details</button>
+        <Link to="/subjects/1" className="deadlineButton">View Details</Link>
       </div>
 
     </section>

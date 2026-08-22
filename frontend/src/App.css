@@ -74,6 +74,9 @@
   border-right: 1px solid #ddd;
 
   box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar h2 {
@@ -746,4 +749,19 @@
 
 .cancelButton:hover {
   background-color: #f5f5f5;
+}
+
+.logoutButton {
+  margin-top: auto;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  opacity: 0.8;
 }
